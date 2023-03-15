@@ -37,24 +37,30 @@ final class NetworkingService {
                                 URLQueryItem(name: "hash", value: hash)]
         
         let url = components.url
+        print(url)
         return url
     }
     
     func getData(url: URL?, competion: @escaping (Result<AnswerMarvelService, NetworkingError>) -> Void) {
+        
         guard let url = url else {
             competion(.failure(.badUrl))
             return
         }
         
         let request = AF.request(url)
-        request.validate()
-        request.responseDecodable(of: AnswerMarvelService.self) { data in
-            guard let character = data.value else {
-                competion(.failure(.decoding))
-                return
-            }
-            competion(.success(character))
+        request.responseJSON { data in
+            print(data)
         }
+//        request.validate()
+//        request.responseDecodable(of: AnswerMarvelService.self) { data in
+//            guard let character = data.value else {
+//                competion(.failure(.decoding))
+//                print("PIZDEC")
+//                return
+//            }
+//            competion(.success(character))
+//        }
     }
 }
 

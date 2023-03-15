@@ -10,6 +10,10 @@ import SnapKit
 
 class MainViewController: UIViewController {
     
+    let networkingService = NetworkingService()
+    
+    var model: [AnswerMarvelService] = []
+    
     // MARK: - Outlets
     
     private lazy var collectionView: UICollectionView = {
@@ -28,6 +32,14 @@ class MainViewController: UIViewController {
         view.backgroundColor = .white
         setupHierarchy()
         setupLayout()
+        networkingService.getData(url: networkingService.createUrlMarvel()) { result in
+            switch result {
+                case .success(let success):
+                    self.model.append(success)
+                case .failure(let failure):
+                    print(failure)
+            }
+        }
     }
     
     // MARK: - Setups
