@@ -46,9 +46,15 @@ final class NetworkingService {
             return
         }
         
-        AF.request(url)
-            .validate()
-            
+        let request = AF.request(url)
+        request.validate()
+        request.responseDecodable(of: AnswerMarvelService.self) { data in
+            guard let character = data.value else {
+                competion(.failure(.decoding))
+                return
+            }
+            competion(.success(character))
+        }
     }
 }
 
