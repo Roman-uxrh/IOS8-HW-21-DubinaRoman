@@ -40,6 +40,7 @@ class MainViewController: UIViewController {
                     print(failure)
             }
         }
+        
     }
     
     // MARK: - Setups

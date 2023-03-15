@@ -33,11 +33,10 @@ final class NetworkingService {
         components.host = "gateway.marvel.com"
         components.path = "/v1/public/characters"
         components.queryItems = [URLQueryItem(name: "ts", value: ts),
-                                URLQueryItem(name: "apiKey", value: publicKey),
+                                URLQueryItem(name: "apikey", value: publicKey),
                                 URLQueryItem(name: "hash", value: hash)]
         
         let url = components.url
-        print(url)
         return url
     }
     
@@ -49,18 +48,16 @@ final class NetworkingService {
         }
         
         let request = AF.request(url)
-        request.responseJSON { data in
-            print(data)
+        
+        request.validate()
+        request.responseDecodable(of: AnswerMarvelService.self) { data in
+            guard let character = data.value else {
+                competion(.failure(.decoding))
+                print("PIZDEC")
+                return
+            }
+            competion(.success(character))
         }
-//        request.validate()
-//        request.responseDecodable(of: AnswerMarvelService.self) { data in
-//            guard let character = data.value else {
-//                competion(.failure(.decoding))
-//                print("PIZDEC")
-//                return
-//            }
-//            competion(.success(character))
-//        }
     }
 }
 
