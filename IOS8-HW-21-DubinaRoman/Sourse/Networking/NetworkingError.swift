@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+enum NetworkingError: String, Error {
+    case badUrl = "НЕВЕРНЫЙ ПУТЬ"
+    case decoding = "ОШИБКА ДЕКОДИРОВАНИЯ"
+}
