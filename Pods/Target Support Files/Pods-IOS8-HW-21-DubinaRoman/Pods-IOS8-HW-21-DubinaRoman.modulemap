@@ -1,0 +1,6 @@
+framework module Pods_IOS8_HW_21_DubinaRoman {
+  umbrella header "Pods-IOS8-HW-21-DubinaRoman-umbrella.h"
+
+  export *
+  module * { export * }
+}
