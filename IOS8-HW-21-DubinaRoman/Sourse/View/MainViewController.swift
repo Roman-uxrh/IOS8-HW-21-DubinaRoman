@@ -39,7 +39,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
 //        navigationController?.navigationBar.backgroundImage = UIImage(systemName: "arrowshape.turn.up.backward.circle")
 //        navigationController?.navigationBar.set
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         setupHierarchy()
         setupLayout()
         networkingService.getData(url: networkingService.createUrlMarvel()) { result in
@@ -62,15 +62,9 @@ class MainViewController: UIViewController {
     }
     
     private func setupLayout() {
-        
-//        imageTop.snp.makeConstraints { make in
-//            make.top.
-//        }
-        
         collectionView.snp.makeConstraints { make in
             make.left.bottom.right.top.equalTo(view)
         }
-        
     }
 }
 
@@ -106,5 +100,12 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         let charactersMarvel = model?.data.results[indexPath.row]
         cell?.configurate(by: charactersMarvel)
         return cell ?? CollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let viewController = DetailViewControllerCell()
+        collectionView.deselectItem(at: indexPath, animated: true)
+        viewController.model = model?.data.results[indexPath.row]
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

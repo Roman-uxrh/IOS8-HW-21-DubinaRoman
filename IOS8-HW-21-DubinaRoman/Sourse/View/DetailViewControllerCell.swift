@@ -9,12 +9,17 @@ import UIKit
 
 class DetailViewControllerCell: UIViewController {
     
+    let networkingService = NetworkingService()
+    
+    var model: CharacterMarvel?
+    
+    let group = DispatchGroup()
+    
     // MARK: - Outlets
     
     private lazy var idNameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.text = "name"
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
@@ -23,42 +28,64 @@ class DetailViewControllerCell: UIViewController {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
-        image.layer.cornerRadius = 6
+        image.layer.cornerRadius = 10
         image.tintColor = .black
-        image.image = UIImage(systemName: "heart")
         return image
     }()
     
     private lazy var descriptionLabel: UITextView = {
         let textView = UITextView()
-        textView.textAlignment = .center
-        textView.backgroundColor = .red
+        textView.textAlignment = .left
         textView.font = .systemFont(ofSize: 20)
-        textView.text = "descriptionLabel"
+        textView.backgroundColor = .systemRed
+        textView.clearsOnInsertion = false
+        textView.isSelectable = false
         return textView
     }()
     
     private lazy var countComic: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.text = "comic"
+        label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
     
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .insetGrouped)
+        let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = self
         return tableView
+    }()
+    
+    private lazy var indicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.color = .black
+        indicator.startAnimating()
+        return indicator
     }()
     
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemRed
         setupHierarchy()
         setupLayout()
+  
+//        networkingService.getData(url: self.networkingService.createUrlMarvel()) { result in
+//            switch result {
+//                case .success(let success):
+//                    self.model = success
+//                    self.configurate(by: self.model?.data.results.first)
+//                    self.tableView.reloadData()
+//                    self.indicator.stopAnimating()
+//                case .failure(let failure):
+//                    print(failure)
+//            }
+//        }
+        
+        configurate(by: model)
+        
     }
     
     // MARK: - Setups
@@ -68,7 +95,8 @@ class DetailViewControllerCell: UIViewController {
          imageCharacter,
          descriptionLabel,
          countComic,
-         tableView].forEach { value in
+         tableView,
+         indicator].forEach { value in
             view.addSubview(value)
         }
     }
@@ -76,7 +104,7 @@ class DetailViewControllerCell: UIViewController {
     private func setupLayout() {
         
         idNameLabel.snp.makeConstraints { make in
-            make.top.equalTo(view).offset(70)
+            make.top.equalTo(view).offset(80)
             make.left.equalTo(view).offset(40)
             make.right.equalTo(view).offset(40)
         }
@@ -89,10 +117,10 @@ class DetailViewControllerCell: UIViewController {
         }
         
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageCharacter.snp.bottom).offset(20)
+            make.top.equalTo(imageCharacter.snp.bottom).offset(10)
             make.left.equalTo(view).offset(40)
             make.right.equalTo(view).offset(-40)
-            make.height.equalTo(150)
+            make.height.equalTo(100)
         }
         
         countComic.snp.makeConstraints { make in
@@ -105,6 +133,45 @@ class DetailViewControllerCell: UIViewController {
             make.top.equalTo(countComic.snp.bottom)
             make.right.left.bottom.equalTo(view)
         }
+        
+        indicator.snp.makeConstraints { make in
+            make.center.equalTo(view)
+            make.width.height.equalTo(350)
+        }
+    }
+    
+    func configurate(by model: CharacterMarvel?) {
+        
+        guard let model = model else { return }
+        
+        idNameLabel.text = "\(model.name ?? "") - id:\(model.id ?? 0)"
+        if model.description == "" {
+            descriptionLabel.text = "Описание персонажа отсутствует"
+        } else {
+            descriptionLabel.text = "Описание персонажа: -  \(model.description ?? "")"
+        }
+        
+        countComic.text = "\(model.comics?.available ?? 0)шт - коммиксов с персонажем"
+        
+        DispatchQueue.global().async {
+            guard let imagePath = model.thumbnail?.path,
+                  let imageFormat = model.thumbnail?.format,
+                  let imageUrl = URL(string: "\(imagePath).\(imageFormat)"),
+                  let imageData = try? Data(contentsOf: imageUrl)
+            else { return }
+            
+            let image = UIImage(data: imageData)
+            
+            DispatchQueue.main.sync {
+                if imagePath.contains("image_not_available") {
+                    self.imageCharacter.image = UIImage(named: "notPhoto")
+                    self.indicator.stopAnimating()
+                } else {
+                    self.imageCharacter.image = image
+                    self.indicator.stopAnimating()
+                }
+            }
+        }
     }
 
 }
@@ -112,12 +179,13 @@ class DetailViewControllerCell: UIViewController {
 extension DetailViewControllerCell: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        model?.comics?.items?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
+        cell.textLabel?.text = model?.comics?.items?[indexPath.row].name
+        cell.backgroundColor = .systemRed
         return cell
     }
     
