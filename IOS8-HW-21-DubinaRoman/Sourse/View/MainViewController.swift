@@ -12,7 +12,7 @@ class MainViewController: UIViewController {
     
     let networkingService = NetworkingService()
     
-    var model: [AnswerMarvelService] = []
+    var model: AnswerMarvelService?
     
     // MARK: - Outlets
     
@@ -45,8 +45,8 @@ class MainViewController: UIViewController {
         networkingService.getData(url: networkingService.createUrlMarvel()) { result in
             switch result {
                 case .success(let success):
-                    self.model.append(success)
-                    print(self.model.first?.data.count)
+                    self.model = success
+                    self.collectionView.reloadData()
                 case .failure(let failure):
                     print(failure)
             }
@@ -98,22 +98,13 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        model?.data.results.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell
-//        let url = url.arrayUrl[indexPath.row]
-//        cell?.configurate(url: url)
-        
-//        DispatchQueue.global(qos: .utility).async(group: dispatchGroup) {
-//            self.url.configurate(arrayUrl: self.url.arrayUrl)
-//        }
-        
-//        if url.arrayImage.count == 50 {
-//            cell?.photoImage.image = url.arrayImage[indexPath.row]
-//            label.text = "Изображения скачаны"
-//        }
+        let charactersMarvel = model?.data.results[indexPath.row]
+        cell?.configurate(by: charactersMarvel)
         return cell ?? CollectionViewCell()
     }
 }

@@ -7,25 +7,24 @@
 
 import UIKit
 import SnapKit
+import Alamofire
 
 class CollectionViewCell: UICollectionViewCell {
     
     static let identifier = "FlowLayoutCell"
     
-    private lazy var photoImage: UIImageView = {
+    lazy var photoImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.layer.cornerRadius = 6
-        image.image = UIImage(systemName: "person.crop.square")
         image.tintColor = .black
         return image
     }()
     
-    private lazy var title: UILabel = {
+    lazy var title: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.text = "Grerjkicks"
         label.textAlignment = .center
         return label
     }()
@@ -63,15 +62,27 @@ class CollectionViewCell: UICollectionViewCell {
     
     // MARK: - Function
     
-    func configurate(by model: [AnswerMarvelService?]) {
+    func configurate(by model: CharacterMarvel?) {
+        
         guard let model = model else { return }
         
+        title.text = model.name
         
+        DispatchQueue.global().async {
+            guard let imagePath = model.thumbnail?.path,
+                  let imageFormat = model.thumbnail?.format,
+                  let imageUrl = URL(string: "\(imagePath).\(imageFormat)"),
+                  let imageData = try? Data(contentsOf: imageUrl)
+            else { return }
+            
+            DispatchQueue.main.sync {
+                self.photoImage.image = UIImage(data: imageData)
+            }
+        }
     }
     
-    
-    //    override func prepareForReuse() {
-    //        self.photoImage.image = nil
-    //    }
+        override func prepareForReuse() {
+            self.photoImage.image = nil
+        }
 }
 
