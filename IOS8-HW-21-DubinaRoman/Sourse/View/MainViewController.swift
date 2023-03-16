@@ -45,9 +45,7 @@ class MainViewController: UIViewController {
         networkingService.getData(url: networkingService.createUrlMarvel()) { result in
             switch result {
                 case .success(let success):
-//                    self.model.append(success)
                     self.model = success
-                    print(self.model)
                     self.collectionView.reloadData()
                 case .failure(let failure):
                     print(failure)
@@ -105,8 +103,8 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell
-        let charactersMarvel: [CharacterMarvel] = model?.data.results ?? []
-        cell?.configurate(by: charactersMarvel[indexPath.row])
+        let charactersMarvel = model?.data.results[indexPath.row]
+        cell?.configurate(by: charactersMarvel)
         return cell ?? CollectionViewCell()
     }
 }

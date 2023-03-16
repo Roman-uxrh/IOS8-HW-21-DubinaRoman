@@ -5,7 +5,7 @@
 //  Created by admin on 15.03.2023.
 //
 
-import Foundation
+import UIKit
 
 struct AnswerMarvelService: Codable {
     var data: CharactersMarvel
