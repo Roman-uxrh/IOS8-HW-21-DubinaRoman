@@ -32,9 +32,10 @@ final class NetworkingService {
         components.scheme = "https"
         components.host = "gateway.marvel.com"
         components.path = "/v1/public/characters"
-        components.queryItems = [URLQueryItem(name: "ts", value: ts),
-                                URLQueryItem(name: "apikey", value: publicKey),
-                                URLQueryItem(name: "hash", value: hash)]
+        components.queryItems = [URLQueryItem(name: "limit", value: "100"),
+                                 URLQueryItem(name: "ts", value: ts),
+                                 URLQueryItem(name: "apikey", value: publicKey),
+                                 URLQueryItem(name: "hash", value: hash)]
         
         let url = components.url
         return url
@@ -53,7 +54,6 @@ final class NetworkingService {
         request.responseDecodable(of: AnswerMarvelService.self) { data in
             guard let character = data.value else {
                 competion(.failure(.decoding))
-                print("PIZDEC")
                 return
             }
             competion(.success(character))
