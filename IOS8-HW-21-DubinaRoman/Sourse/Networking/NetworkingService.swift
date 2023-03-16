@@ -32,7 +32,7 @@ final class NetworkingService {
         components.scheme = "https"
         components.host = "gateway.marvel.com"
         components.path = "/v1/public/characters"
-        components.queryItems = [URLQueryItem(name: "limit", value: "100"),
+        components.queryItems = [URLQueryItem(name: "limit", value: "30"),
                                  URLQueryItem(name: "ts", value: ts),
                                  URLQueryItem(name: "apikey", value: publicKey),
                                  URLQueryItem(name: "hash", value: hash)]

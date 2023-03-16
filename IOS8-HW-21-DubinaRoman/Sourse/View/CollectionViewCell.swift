@@ -13,6 +13,8 @@ class CollectionViewCell: UICollectionViewCell {
     
     static let identifier = "FlowLayoutCell"
     
+    // MARK: - Outlets
+    
     lazy var photoImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
@@ -29,6 +31,8 @@ class CollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    // MARK: - Initializers
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.backgroundColor = .red
@@ -39,6 +43,8 @@ class CollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Setups
     
     private func setupHierarchy() {
         addSubview(photoImage)
@@ -75,14 +81,20 @@ class CollectionViewCell: UICollectionViewCell {
                   let imageData = try? Data(contentsOf: imageUrl)
             else { return }
             
+            let image = UIImage(data: imageData)
+            
             DispatchQueue.main.sync {
-                self.photoImage.image = UIImage(data: imageData)
+                if imagePath.contains("image_not_available") {
+                    self.photoImage.image = UIImage(named: "notPhoto")
+                } else {
+                    self.photoImage.image = image
+                }
             }
         }
     }
     
-        override func prepareForReuse() {
-            self.photoImage.image = nil
-        }
+    override func prepareForReuse() {
+        self.photoImage.image = nil
+    }
 }
 
