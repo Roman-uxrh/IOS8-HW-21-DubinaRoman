@@ -32,23 +32,32 @@ final class NetworkingService {
         components.scheme = "https"
         components.host = "gateway.marvel.com"
         components.path = "/v1/public/characters"
-        components.queryItems = [URLQueryItem(name: "ts", value: ts),
-                                URLQueryItem(name: "apiKey", value: publicKey),
-                                URLQueryItem(name: "hash", value: hash)]
+        components.queryItems = [URLQueryItem(name: "limit", value: "100"),
+                                 URLQueryItem(name: "ts", value: ts),
+                                 URLQueryItem(name: "apikey", value: publicKey),
+                                 URLQueryItem(name: "hash", value: hash)]
         
         let url = components.url
         return url
     }
     
     func getData(url: URL?, competion: @escaping (Result<AnswerMarvelService, NetworkingError>) -> Void) {
+        
         guard let url = url else {
             competion(.failure(.badUrl))
             return
         }
         
-        AF.request(url)
-            .validate()
-            
+        let request = AF.request(url)
+        
+        request.validate()
+        request.responseDecodable(of: AnswerMarvelService.self) { data in
+            guard let character = data.value else {
+                competion(.failure(.decoding))
+                return
+            }
+            competion(.success(character))
+        }
     }
 }
 
