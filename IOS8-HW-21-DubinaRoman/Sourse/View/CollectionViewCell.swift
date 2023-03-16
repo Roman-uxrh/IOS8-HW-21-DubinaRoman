@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Alamofire
 
 class CollectionViewCell: UICollectionViewCell {
     
@@ -17,7 +18,7 @@ class CollectionViewCell: UICollectionViewCell {
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.layer.cornerRadius = 6
-        image.image = UIImage(systemName: "person.crop.square")
+//        image.image = UIImage(systemName: "person.crop.square")
         image.tintColor = .black
         return image
     }()
@@ -25,7 +26,7 @@ class CollectionViewCell: UICollectionViewCell {
     private lazy var title: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.text = "Grerjkicks"
+//        label.text = "Grerjkicks"
         label.textAlignment = .center
         return label
     }()
@@ -63,15 +64,30 @@ class CollectionViewCell: UICollectionViewCell {
     
     // MARK: - Function
     
-    func configurate(by model: [AnswerMarvelService?]) {
+    func configurate(by model: CharacterMarvel?) {
         guard let model = model else { return }
         
+        title.text = model.name
+        
+        guard let imagePath = model.thumbnail?.path,
+              let imageFormat = model.thumbnail?.format,
+              let imageUrl = URL(string: "\(imagePath).\(imageFormat)")
+//              let imageData = try? Data(contentsOf: imageUrl)
+        else { return }
+        
+        let request = AF.request(imageUrl)
+        request.validate()
+        guard let imageData = request.data else { return }
+        
+            DispatchQueue.main.async {
+                self.photoImage.image = UIImage(data: imageData)
+            }
         
     }
     
     
-    //    override func prepareForReuse() {
-    //        self.photoImage.image = nil
-    //    }
+        override func prepareForReuse() {
+            self.photoImage.image = nil
+        }
 }
 
