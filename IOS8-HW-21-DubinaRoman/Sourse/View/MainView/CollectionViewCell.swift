@@ -9,9 +9,11 @@ import UIKit
 import SnapKit
 import Alamofire
 
-class CollectionViewCell: UICollectionViewCell {
+class CollectionViewCell: UICollectionViewCell, CollectinViewCellProtocol {
     
     static let identifier = "FlowLayoutCell"
+    
+    // MARK: - Outlets
     
     lazy var photoImage: UIImageView = {
         let image = UIImageView()
@@ -29,9 +31,18 @@ class CollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    lazy var indicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.color = .black
+        indicator.startAnimating()
+        return indicator
+    }()
+    
+    // MARK: - Initializers
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .red
+        contentView.backgroundColor = .white
         setupHierarchy()
         setupLayout()
     }
@@ -40,9 +51,12 @@ class CollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Setups
+    
     private func setupHierarchy() {
         addSubview(photoImage)
         addSubview(title)
+        addSubview(indicator)
     }
     
     private func setupLayout() {
@@ -57,6 +71,10 @@ class CollectionViewCell: UICollectionViewCell {
             make.right.left.top.equalTo(contentView)
             make.height.equalTo(20)
             make.centerX.equalToSuperview()
+        }
+        
+        indicator.snp.makeConstraints { make in
+            make.center.equalTo(contentView)
         }
     }
     
@@ -75,14 +93,23 @@ class CollectionViewCell: UICollectionViewCell {
                   let imageData = try? Data(contentsOf: imageUrl)
             else { return }
             
+            let image = UIImage(data: imageData)
+            
             DispatchQueue.main.sync {
-                self.photoImage.image = UIImage(data: imageData)
+                if imagePath.contains("image_not_available") {
+                    self.photoImage.image = UIImage(named: "notPhoto")
+                    self.indicator.stopAnimating()
+                } else {
+                    self.photoImage.image = image
+                    self.indicator.stopAnimating()
+                }
             }
         }
     }
     
-        override func prepareForReuse() {
-            self.photoImage.image = nil
-        }
+    override func prepareForReuse() {
+        self.photoImage.image = nil
+        self.indicator.startAnimating()
+    }
 }
 
