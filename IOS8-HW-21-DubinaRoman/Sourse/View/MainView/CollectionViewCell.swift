@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Alamofire
 
-class CollectionViewCell: UICollectionViewCell {
+class CollectionViewCell: UICollectionViewCell, CollectinViewCellProtocol {
     
     static let identifier = "FlowLayoutCell"
     
@@ -109,6 +109,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         self.photoImage.image = nil
+        self.indicator.startAnimating()
     }
 }
 

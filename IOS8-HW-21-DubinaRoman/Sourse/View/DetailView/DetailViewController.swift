@@ -7,13 +7,9 @@
 
 import UIKit
 
-class DetailViewControllerCell: UIViewController {
+class DetailViewController: UIViewController, DetailViewProtocol {
     
-    let networkingService = NetworkingService()
-    
-    var model: CharacterMarvel?
-    
-    let group = DispatchGroup()
+    var presenter: DetailViewPresenterProtocol?
     
     // MARK: - Outlets
     
@@ -71,7 +67,7 @@ class DetailViewControllerCell: UIViewController {
         view.backgroundColor = .systemRed
         setupHierarchy()
         setupLayout()
-        configurate(by: model)
+        configurate(by: presenter?.model)
     }
     
     // MARK: - Setups
@@ -125,6 +121,7 @@ class DetailViewControllerCell: UIViewController {
             make.width.height.equalTo(350)
         }
     }
+    // MARK: - Functions
     
     func configurate(by model: CharacterMarvel?) {
         
@@ -161,16 +158,17 @@ class DetailViewControllerCell: UIViewController {
     }
 
 }
+// MARK: - Extension tableView
 
-extension DetailViewControllerCell: UITableViewDataSource {
+extension DetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        model?.comics?.items?.count ?? 0
+        presenter?.model.comics?.items?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = model?.comics?.items?[indexPath.row].name
+        cell.textLabel?.text = presenter?.model.comics?.items?[indexPath.row].name
         cell.backgroundColor = .systemRed
         return cell
     }

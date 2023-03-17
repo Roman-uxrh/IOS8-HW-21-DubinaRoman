@@ -17,7 +17,10 @@
 		8492AF5C29C08B94009525AC /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492AF5B29C08B94009525AC /* NetworkingService.swift */; };
 		8492AF5E29C08BA4009525AC /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492AF5D29C08BA4009525AC /* NetworkingError.swift */; };
 		8492AF6229C19F2A009525AC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492AF6129C19F2A009525AC /* Model.swift */; };
-		84E58CB329C3295600442043 /* DetailViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E58CB229C3295500442043 /* DetailViewControllerCell.swift */; };
+		84E58CB329C3295600442043 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E58CB229C3295500442043 /* DetailViewController.swift */; };
+		84E58CB829C44F5500442043 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E58CB729C44F5500442043 /* ModuleBuilder.swift */; };
+		84E58CBA29C4506E00442043 /* MainViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E58CB929C4506E00442043 /* MainViewPresenter.swift */; };
+		84E58CBC29C45BA900442043 /* DetailViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E58CBB29C45BA900442043 /* DetailViewPresenter.swift */; };
 		F2090645A972FFE0DCA247F9 /* Pods_IOS8_HW_21_DubinaRoman.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B4BA03393E3C9F484BF156 /* Pods_IOS8_HW_21_DubinaRoman.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,7 +38,10 @@
 		8492AF5B29C08B94009525AC /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		8492AF5D29C08BA4009525AC /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 		8492AF6129C19F2A009525AC /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		84E58CB229C3295500442043 /* DetailViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerCell.swift; sourceTree = "<group>"; };
+		84E58CB229C3295500442043 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		84E58CB729C44F5500442043 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		84E58CB929C4506E00442043 /* MainViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewPresenter.swift; sourceTree = "<group>"; };
+		84E58CBB29C45BA900442043 /* DetailViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewPresenter.swift; sourceTree = "<group>"; };
 		F7B4BA03393E3C9F484BF156 /* Pods_IOS8_HW_21_DubinaRoman.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOS8_HW_21_DubinaRoman.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -100,10 +106,11 @@
 		8492AF5229C07640009525AC /* Sourse */ = {
 			isa = PBXGroup;
 			children = (
-				8492AF5429C07855009525AC /* View */,
-				8492AF5A29C08B7B009525AC /* Networking */,
-				8492AF5F29C19E79009525AC /* Model */,
 				8492AF5329C07658009525AC /* App */,
+				8492AF5A29C08B7B009525AC /* Networking */,
+				84E58CB629C44F2200442043 /* ModuleBuilder */,
+				8492AF5429C07855009525AC /* View */,
+				8492AF5F29C19E79009525AC /* Model */,
 			);
 			path = Sourse;
 			sourceTree = "<group>";
@@ -120,9 +127,8 @@
 		8492AF5429C07855009525AC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8492AF3D29C0727D009525AC /* MainViewController.swift */,
-				8492AF5529C078F5009525AC /* CollectionViewCell.swift */,
-				84E58CB229C3295500442043 /* DetailViewControllerCell.swift */,
+				84E58CB429C44ED600442043 /* MainView */,
+				84E58CB529C44EE800442043 /* DetailView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -142,6 +148,33 @@
 				8492AF6129C19F2A009525AC /* Model.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		84E58CB429C44ED600442043 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				84E58CB929C4506E00442043 /* MainViewPresenter.swift */,
+				8492AF3D29C0727D009525AC /* MainViewController.swift */,
+				8492AF5529C078F5009525AC /* CollectionViewCell.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		84E58CB529C44EE800442043 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				84E58CBB29C45BA900442043 /* DetailViewPresenter.swift */,
+				84E58CB229C3295500442043 /* DetailViewController.swift */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		84E58CB629C44F2200442043 /* ModuleBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				84E58CB729C44F5500442043 /* ModuleBuilder.swift */,
+			);
+			path = ModuleBuilder;
 			sourceTree = "<group>";
 		};
 		EF292931584EF9698A44C1CB /* Pods */ = {
@@ -275,11 +308,14 @@
 			files = (
 				8492AF6229C19F2A009525AC /* Model.swift in Sources */,
 				8492AF3E29C0727D009525AC /* MainViewController.swift in Sources */,
+				84E58CBA29C4506E00442043 /* MainViewPresenter.swift in Sources */,
 				8492AF5C29C08B94009525AC /* NetworkingService.swift in Sources */,
-				84E58CB329C3295600442043 /* DetailViewControllerCell.swift in Sources */,
+				84E58CB329C3295600442043 /* DetailViewController.swift in Sources */,
 				8492AF3A29C0727D009525AC /* AppDelegate.swift in Sources */,
+				84E58CB829C44F5500442043 /* ModuleBuilder.swift in Sources */,
 				8492AF3C29C0727D009525AC /* SceneDelegate.swift in Sources */,
 				8492AF5E29C08BA4009525AC /* NetworkingError.swift in Sources */,
+				84E58CBC29C45BA900442043 /* DetailViewPresenter.swift in Sources */,
 				8492AF5629C078F5009525AC /* CollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

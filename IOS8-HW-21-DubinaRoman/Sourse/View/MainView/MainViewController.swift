@@ -8,11 +8,9 @@
 import UIKit
 import SnapKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, MainViewControllerProtocol {
     
-    let networkingService = NetworkingService()
-    
-    var model: AnswerMarvelService?
+    var presenter: MainViewPresenterProtocol?
     
     // MARK: - Outlets
     
@@ -40,17 +38,7 @@ class MainViewController: UIViewController {
         view.backgroundColor = UIColor.red
         setupHierarchy()
         setupLayout()
-        networkingService.getData(url: networkingService.createUrlMarvel()) { result in
-            switch result {
-                case .success(let success):
-                    self.model = success
-                    self.collectionView.reloadData()
-                case .failure(let failure):
-                    print(failure)
-            }
-        }
         configurateTabBar()
-        
     }
     
     // MARK: - Setups
@@ -76,6 +64,12 @@ class MainViewController: UIViewController {
         compactAppearance.backgroundImage = UIImage(named: "Marvel")
         navigationController?.navigationBar.scrollEdgeAppearance = standardAppearance
         navigationController?.navigationBar.compactAppearance = compactAppearance
+    }
+    
+    //MARK: - Function
+    
+    func reloadData() {
+        collectionView.reloadData()
     }
 }
 
@@ -103,21 +97,20 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        model?.data.results.count ?? 0
+        presenter?.model?.data.results.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell
-        let charactersMarvel = model?.data.results[indexPath.row]
+        let charactersMarvel = presenter?.model?.data.results[indexPath.row]
         cell?.configurate(by: charactersMarvel)
         return cell ?? CollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let viewController = DetailViewControllerCell()
+        guard let character = presenter?.model?.data.results[indexPath.row] else { return }
+        let viewController = ModuleBuilder.createDetailView(character: character)
         collectionView.deselectItem(at: indexPath, animated: true)
-        viewController.model = model?.data.results[indexPath.row]
         present(viewController, animated: true)
-//        navigationController?.pushViewController(viewController, animated: true)
     }
 }

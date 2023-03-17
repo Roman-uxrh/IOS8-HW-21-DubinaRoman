@@ -9,7 +9,12 @@ import Foundation
 import CryptoKit
 import Alamofire
 
-final class NetworkingService {
+protocol NetworkingServiceProtocol {
+    func createUrlMarvel() -> URL?
+    func getData(url: URL?, competion: @escaping (Result<AnswerMarvelService, NetworkingError>) -> Void)
+}
+
+final class NetworkingService: NetworkingServiceProtocol {
     
     // Функция для создания hash
     private func MD5(string: String) -> String {
