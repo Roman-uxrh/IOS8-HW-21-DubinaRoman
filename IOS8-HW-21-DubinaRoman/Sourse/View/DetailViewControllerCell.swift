@@ -71,21 +71,7 @@ class DetailViewControllerCell: UIViewController {
         view.backgroundColor = .systemRed
         setupHierarchy()
         setupLayout()
-  
-//        networkingService.getData(url: self.networkingService.createUrlMarvel()) { result in
-//            switch result {
-//                case .success(let success):
-//                    self.model = success
-//                    self.configurate(by: self.model?.data.results.first)
-//                    self.tableView.reloadData()
-//                    self.indicator.stopAnimating()
-//                case .failure(let failure):
-//                    print(failure)
-//            }
-//        }
-        
         configurate(by: model)
-        
     }
     
     // MARK: - Setups
@@ -104,7 +90,7 @@ class DetailViewControllerCell: UIViewController {
     private func setupLayout() {
         
         idNameLabel.snp.makeConstraints { make in
-            make.top.equalTo(view).offset(80)
+            make.top.equalTo(view).offset(10)
             make.left.equalTo(view).offset(40)
             make.right.equalTo(view).offset(40)
         }

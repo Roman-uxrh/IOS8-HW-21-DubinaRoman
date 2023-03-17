@@ -37,9 +37,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        navigationController?.navigationBar.backgroundImage = UIImage(systemName: "arrowshape.turn.up.backward.circle")
-//        navigationController?.navigationBar.set
-        view.backgroundColor = .black
+        view.backgroundColor = UIColor.red
         setupHierarchy()
         setupLayout()
         networkingService.getData(url: networkingService.createUrlMarvel()) { result in
@@ -51,6 +49,7 @@ class MainViewController: UIViewController {
                     print(failure)
             }
         }
+        configurateTabBar()
         
     }
     
@@ -65,6 +64,18 @@ class MainViewController: UIViewController {
         collectionView.snp.makeConstraints { make in
             make.left.bottom.right.top.equalTo(view)
         }
+    }
+    
+    private func configurateTabBar() {
+        let standardAppearance = UINavigationBarAppearance()
+        standardAppearance.configureWithOpaqueBackground()
+        standardAppearance.backgroundImage = UIImage(named: "Marvel")
+        navigationController?.navigationBar.standardAppearance = standardAppearance
+        
+        let compactAppearance = standardAppearance.copy()
+        compactAppearance.backgroundImage = UIImage(named: "Marvel")
+        navigationController?.navigationBar.scrollEdgeAppearance = standardAppearance
+        navigationController?.navigationBar.compactAppearance = compactAppearance
     }
 }
 
@@ -106,6 +117,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         let viewController = DetailViewControllerCell()
         collectionView.deselectItem(at: indexPath, animated: true)
         viewController.model = model?.data.results[indexPath.row]
-        navigationController?.pushViewController(viewController, animated: true)
+        present(viewController, animated: true)
+//        navigationController?.pushViewController(viewController, animated: true)
     }
 }

@@ -31,6 +31,13 @@ class CollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    lazy var indicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.color = .black
+        indicator.startAnimating()
+        return indicator
+    }()
+    
     // MARK: - Initializers
     
     override init(frame: CGRect) {
@@ -49,6 +56,7 @@ class CollectionViewCell: UICollectionViewCell {
     private func setupHierarchy() {
         addSubview(photoImage)
         addSubview(title)
+        addSubview(indicator)
     }
     
     private func setupLayout() {
@@ -63,6 +71,10 @@ class CollectionViewCell: UICollectionViewCell {
             make.right.left.top.equalTo(contentView)
             make.height.equalTo(20)
             make.centerX.equalToSuperview()
+        }
+        
+        indicator.snp.makeConstraints { make in
+            make.center.equalTo(contentView)
         }
     }
     
@@ -86,8 +98,10 @@ class CollectionViewCell: UICollectionViewCell {
             DispatchQueue.main.sync {
                 if imagePath.contains("image_not_available") {
                     self.photoImage.image = UIImage(named: "notPhoto")
+                    self.indicator.stopAnimating()
                 } else {
                     self.photoImage.image = image
+                    self.indicator.stopAnimating()
                 }
             }
         }
