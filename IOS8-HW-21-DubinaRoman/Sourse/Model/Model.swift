@@ -8,12 +8,12 @@
 import UIKit
 
 struct AnswerMarvelService: Codable {
-    var data: CharactersMarvel
+    var data: CharactersMarvel?
 }
 
 struct CharactersMarvel: Codable {
     var count: Int?
-    var results: [CharacterMarvel]
+    var results: [CharacterMarvel]?
 }
 
 struct CharacterMarvel: Codable {
