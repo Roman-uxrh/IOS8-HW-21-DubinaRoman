@@ -10,4 +10,6 @@ import Foundation
 enum NetworkingError: String, Error {
     case badUrl = "НЕВЕРНЫЙ ПУТЬ"
     case decoding = "ОШИБКА ДЕКОДИРОВАНИЯ"
+    case invalidParametrs = "КРИВЫЕ ПАРАМЕТРЫ"
+    case invalidData = "ХУИНЫЕ ДАННЫЕ"
 }

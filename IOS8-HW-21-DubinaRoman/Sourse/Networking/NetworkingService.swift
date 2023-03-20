@@ -66,4 +66,15 @@ final class NetworkingService: NetworkingServiceProtocol {
     }
 }
 
+class MokNetworkService {
     
+    let networkDispather: NetworkDispather = NetworkDispatherImpl()
+    
+    func getData() {
+        Task {
+            let response: [CharacterMarvel] = try await networkDispather.request(CharactersRequest())
+            print(response)
+            
+        }
+    }
+}
