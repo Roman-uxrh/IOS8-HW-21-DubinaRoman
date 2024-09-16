@@ -9,21 +9,44 @@
 /* Begin PBXBuildFile section */
 		8492AF3A29C0727D009525AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492AF3929C0727D009525AC /* AppDelegate.swift */; };
 		8492AF3C29C0727D009525AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492AF3B29C0727D009525AC /* SceneDelegate.swift */; };
-		8492AF3E29C0727D009525AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492AF3D29C0727D009525AC /* ViewController.swift */; };
-		8492AF4129C0727D009525AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8492AF3F29C0727D009525AC /* Main.storyboard */; };
+		8492AF3E29C0727D009525AC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492AF3D29C0727D009525AC /* MainViewController.swift */; };
 		8492AF4329C07280009525AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8492AF4229C07280009525AC /* Assets.xcassets */; };
 		8492AF4629C07280009525AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8492AF4429C07280009525AC /* LaunchScreen.storyboard */; };
+		8492AF5629C078F5009525AC /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492AF5529C078F5009525AC /* CollectionViewCell.swift */; };
+		8492AF5929C07933009525AC /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8492AF5829C07933009525AC /* SnapKit */; };
+		8492AF5C29C08B94009525AC /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492AF5B29C08B94009525AC /* NetworkingService.swift */; };
+		8492AF5E29C08BA4009525AC /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492AF5D29C08BA4009525AC /* NetworkingError.swift */; };
+		8492AF6229C19F2A009525AC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8492AF6129C19F2A009525AC /* Model.swift */; };
+		84959BD629C847D700ED6569 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84959BD529C847D700ED6569 /* EndPoint.swift */; };
+		84959BD829C8483000ED6569 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84959BD729C8483000ED6569 /* Environment.swift */; };
+		84E58CB329C3295600442043 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E58CB229C3295500442043 /* DetailViewController.swift */; };
+		84E58CB829C44F5500442043 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E58CB729C44F5500442043 /* ModuleBuilder.swift */; };
+		84E58CBA29C4506E00442043 /* MainViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E58CB929C4506E00442043 /* MainViewPresenter.swift */; };
+		84E58CBC29C45BA900442043 /* DetailViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E58CBB29C45BA900442043 /* DetailViewPresenter.swift */; };
+		F2090645A972FFE0DCA247F9 /* Pods_IOS8_HW_21_DubinaRoman.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7B4BA03393E3C9F484BF156 /* Pods_IOS8_HW_21_DubinaRoman.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		107BA2BD62AF6F2928775398 /* Pods-IOS8-HW-21-DubinaRoman.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS8-HW-21-DubinaRoman.debug.xcconfig"; path = "Target Support Files/Pods-IOS8-HW-21-DubinaRoman/Pods-IOS8-HW-21-DubinaRoman.debug.xcconfig"; sourceTree = "<group>"; };
+		81026F1AA14BEC13D6FBFAB1 /* Pods-IOS8-HW-21-DubinaRoman.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS8-HW-21-DubinaRoman.release.xcconfig"; path = "Target Support Files/Pods-IOS8-HW-21-DubinaRoman/Pods-IOS8-HW-21-DubinaRoman.release.xcconfig"; sourceTree = "<group>"; };
 		8492AF3629C0727D009525AC /* IOS8-HW-21-DubinaRoman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IOS8-HW-21-DubinaRoman.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8492AF3929C0727D009525AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8492AF3B29C0727D009525AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8492AF3D29C0727D009525AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8492AF4029C0727D009525AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8492AF3D29C0727D009525AC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8492AF4229C07280009525AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8492AF4529C07280009525AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8492AF4729C07280009525AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8492AF5529C078F5009525AC /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		8492AF5B29C08B94009525AC /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
+		8492AF5D29C08BA4009525AC /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
+		8492AF6129C19F2A009525AC /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		84959BD529C847D700ED6569 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		84959BD729C8483000ED6569 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		84E58CB229C3295500442043 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		84E58CB729C44F5500442043 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		84E58CB929C4506E00442043 /* MainViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewPresenter.swift; sourceTree = "<group>"; };
+		84E58CBB29C45BA900442043 /* DetailViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewPresenter.swift; sourceTree = "<group>"; };
+		F7B4BA03393E3C9F484BF156 /* Pods_IOS8_HW_21_DubinaRoman.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IOS8_HW_21_DubinaRoman.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +54,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8492AF5929C07933009525AC /* SnapKit in Frameworks */,
+				F2090645A972FFE0DCA247F9 /* Pods_IOS8_HW_21_DubinaRoman.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0EB946270BA2A692DD3AD914 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F7B4BA03393E3C9F484BF156 /* Pods_IOS8_HW_21_DubinaRoman.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8492AF2D29C0727D009525AC = {
 			isa = PBXGroup;
 			children = (
 				8492AF3829C0727D009525AC /* IOS8-HW-21-DubinaRoman */,
 				8492AF3729C0727D009525AC /* Products */,
+				EF292931584EF9698A44C1CB /* Pods */,
+				0EB946270BA2A692DD3AD914 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +91,105 @@
 		8492AF3829C0727D009525AC /* IOS8-HW-21-DubinaRoman */ = {
 			isa = PBXGroup;
 			children = (
-				8492AF3929C0727D009525AC /* AppDelegate.swift */,
-				8492AF3B29C0727D009525AC /* SceneDelegate.swift */,
-				8492AF3D29C0727D009525AC /* ViewController.swift */,
-				8492AF3F29C0727D009525AC /* Main.storyboard */,
+				8492AF5229C07640009525AC /* Sourse */,
+				8492AF5129C07638009525AC /* Resourse */,
+			);
+			path = "IOS8-HW-21-DubinaRoman";
+			sourceTree = "<group>";
+		};
+		8492AF5129C07638009525AC /* Resourse */ = {
+			isa = PBXGroup;
+			children = (
 				8492AF4229C07280009525AC /* Assets.xcassets */,
 				8492AF4429C07280009525AC /* LaunchScreen.storyboard */,
 				8492AF4729C07280009525AC /* Info.plist */,
 			);
-			path = "IOS8-HW-21-DubinaRoman";
+			path = Resourse;
+			sourceTree = "<group>";
+		};
+		8492AF5229C07640009525AC /* Sourse */ = {
+			isa = PBXGroup;
+			children = (
+				8492AF5329C07658009525AC /* App */,
+				8492AF5A29C08B7B009525AC /* Networking */,
+				84E58CB629C44F2200442043 /* ModuleBuilder */,
+				8492AF5429C07855009525AC /* View */,
+				8492AF5F29C19E79009525AC /* Model */,
+			);
+			path = Sourse;
+			sourceTree = "<group>";
+		};
+		8492AF5329C07658009525AC /* App */ = {
+			isa = PBXGroup;
+			children = (
+				8492AF3B29C0727D009525AC /* SceneDelegate.swift */,
+				8492AF3929C0727D009525AC /* AppDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		8492AF5429C07855009525AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84E58CB429C44ED600442043 /* MainView */,
+				84E58CB529C44EE800442043 /* DetailView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8492AF5A29C08B7B009525AC /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				8492AF5B29C08B94009525AC /* NetworkingService.swift */,
+				8492AF5D29C08BA4009525AC /* NetworkingError.swift */,
+				84959BD529C847D700ED6569 /* EndPoint.swift */,
+				84959BD729C8483000ED6569 /* Environment.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		8492AF5F29C19E79009525AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8492AF6129C19F2A009525AC /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84E58CB429C44ED600442043 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				84E58CB929C4506E00442043 /* MainViewPresenter.swift */,
+				8492AF3D29C0727D009525AC /* MainViewController.swift */,
+				8492AF5529C078F5009525AC /* CollectionViewCell.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		84E58CB529C44EE800442043 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				84E58CBB29C45BA900442043 /* DetailViewPresenter.swift */,
+				84E58CB229C3295500442043 /* DetailViewController.swift */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		84E58CB629C44F2200442043 /* ModuleBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				84E58CB729C44F5500442043 /* ModuleBuilder.swift */,
+			);
+			path = ModuleBuilder;
+			sourceTree = "<group>";
+		};
+		EF292931584EF9698A44C1CB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				107BA2BD62AF6F2928775398 /* Pods-IOS8-HW-21-DubinaRoman.debug.xcconfig */,
+				81026F1AA14BEC13D6FBFAB1 /* Pods-IOS8-HW-21-DubinaRoman.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,15 +199,20 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8492AF4A29C07280009525AC /* Build configuration list for PBXNativeTarget "IOS8-HW-21-DubinaRoman" */;
 			buildPhases = (
+				449D435C55A73C4943B0BAE4 /* [CP] Check Pods Manifest.lock */,
 				8492AF3229C0727D009525AC /* Sources */,
 				8492AF3329C0727D009525AC /* Frameworks */,
 				8492AF3429C0727D009525AC /* Resources */,
+				5893B48F5C291A759EA81A64 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "IOS8-HW-21-DubinaRoman";
+			packageProductDependencies = (
+				8492AF5829C07933009525AC /* SnapKit */,
+			);
 			productName = "IOS8-HW-21-DubinaRoman";
 			productReference = 8492AF3629C0727D009525AC /* IOS8-HW-21-DubinaRoman.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +241,9 @@
 				Base,
 			);
 			mainGroup = 8492AF2D29C0727D009525AC;
+			packageReferences = (
+				8492AF5729C07933009525AC /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 8492AF3729C0727D009525AC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,34 +260,77 @@
 			files = (
 				8492AF4629C07280009525AC /* LaunchScreen.storyboard in Resources */,
 				8492AF4329C07280009525AC /* Assets.xcassets in Resources */,
-				8492AF4129C0727D009525AC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		449D435C55A73C4943B0BAE4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IOS8-HW-21-DubinaRoman-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5893B48F5C291A759EA81A64 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IOS8-HW-21-DubinaRoman/Pods-IOS8-HW-21-DubinaRoman-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IOS8-HW-21-DubinaRoman/Pods-IOS8-HW-21-DubinaRoman-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IOS8-HW-21-DubinaRoman/Pods-IOS8-HW-21-DubinaRoman-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8492AF3229C0727D009525AC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8492AF3E29C0727D009525AC /* ViewController.swift in Sources */,
+				8492AF6229C19F2A009525AC /* Model.swift in Sources */,
+				8492AF3E29C0727D009525AC /* MainViewController.swift in Sources */,
+				84E58CBA29C4506E00442043 /* MainViewPresenter.swift in Sources */,
+				8492AF5C29C08B94009525AC /* NetworkingService.swift in Sources */,
+				84E58CB329C3295600442043 /* DetailViewController.swift in Sources */,
 				8492AF3A29C0727D009525AC /* AppDelegate.swift in Sources */,
+				84959BD629C847D700ED6569 /* EndPoint.swift in Sources */,
+				84E58CB829C44F5500442043 /* ModuleBuilder.swift in Sources */,
+				84959BD829C8483000ED6569 /* Environment.swift in Sources */,
 				8492AF3C29C0727D009525AC /* SceneDelegate.swift in Sources */,
+				8492AF5E29C08BA4009525AC /* NetworkingError.swift in Sources */,
+				84E58CBC29C45BA900442043 /* DetailViewPresenter.swift in Sources */,
+				8492AF5629C078F5009525AC /* CollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8492AF3F29C0727D009525AC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8492AF4029C0727D009525AC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8492AF4429C07280009525AC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,6 +458,7 @@
 		};
 		8492AF4B29C07280009525AC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 107BA2BD62AF6F2928775398 /* Pods-IOS8-HW-21-DubinaRoman.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -289,10 +466,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ANJYS43MSX;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "IOS8-HW-21-DubinaRoman/Info.plist";
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_FILE = "IOS8-HW-21-DubinaRoman/Resourse/Info.plist";
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -310,6 +485,7 @@
 		};
 		8492AF4C29C07280009525AC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81026F1AA14BEC13D6FBFAB1 /* Pods-IOS8-HW-21-DubinaRoman.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -317,10 +493,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ANJYS43MSX;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "IOS8-HW-21-DubinaRoman/Info.plist";
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_FILE = "IOS8-HW-21-DubinaRoman/Resourse/Info.plist";
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -358,6 +532,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8492AF5729C07933009525AC /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8492AF5829C07933009525AC /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8492AF5729C07933009525AC /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8492AF2E29C0727D009525AC /* Project object */;
 }
